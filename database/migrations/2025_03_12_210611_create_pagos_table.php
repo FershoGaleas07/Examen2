@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pagos', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->unsignedBigInteger('id_pedido');
             $table->foreign('id_pedido')->references('id')->on('pedidos');
             $table->string('metodo');
-            $table->enum('estado', ['pendiente', 'completado'])->default('fallido');
-            $table->timestamps('fecha_pago');
+            $table->enum('estado', ['pendiente', 'completado','fallido'])->default('fallido');
+            $table->timestamps();
         });
     }
 

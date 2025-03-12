@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id()->autoIncrement()->primary();
-            $table->unsignedBigInteger('usuario_id');
+            $table->id()->autoIncrement();
+            $table->unsignedBigInteger('usuario_id')->nullable();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->decimal('total');
-            $table->enum('estado', ['Pendiente', 'Pagado'])->default('Enviado');
-            $table->timestamps('creado_en');
+            $table->enum('Estado', ['Pendiente', 'Pagado','Enviado'])->default('Enviado');
+
             $table->timestamps();
         });
     }

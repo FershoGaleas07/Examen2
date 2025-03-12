@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('productos__categorias', function (Blueprint $table) {
-            $table->id()->autoincrement()->primary();
+            $table->id()->autoincrement();
             $table->unsignedBigInteger('producto_id');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
